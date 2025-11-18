@@ -68,6 +68,7 @@ impl Default for ConnectionParams {
             app_version: env!("CARGO_PKG_VERSION").to_string(),
             system_lang_code,
             lang_code,
+            lang_pack: String::new(), // Default empty lang_pack
             #[cfg(feature = "proxy")]
             proxy_url: None,
             __non_exhaustive: (),
