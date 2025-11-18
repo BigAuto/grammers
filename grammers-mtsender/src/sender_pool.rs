@@ -288,7 +288,7 @@ impl SenderPoolRunner {
                 system_version: self.connection_params.system_version.clone(),
                 app_version: self.connection_params.app_version.clone(),
                 system_lang_code: self.connection_params.system_lang_code.clone(),
-                lang_pack: "".into(),
+                lang_pack: self.connection_params.lang_pack.clone(),
                 lang_code: self.connection_params.lang_code.clone(),
                 proxy: None,
                 params: None,
