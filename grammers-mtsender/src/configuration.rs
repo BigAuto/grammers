@@ -27,6 +27,7 @@ pub struct ConnectionParams {
     /// Either an ISO 639-1 language code or a language pack name obtained from
     /// a [language pack link](https://core.telegram.org/api/links#language-pack-links).
     pub lang_code: String,
+    pub lang_pack: String,
     /// URL of the proxy to use. Requires the `proxy` feature to be enabled.
     ///
     /// The scheme must be `socks5`. Username and password are optional, e.g.:
