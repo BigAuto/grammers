@@ -33,6 +33,7 @@ fn map_random_ids_to_messages(
             seq: _,
         }) => {
             let peers = PeerMap::new(users, chats);
+            client.cache_peers_maybe(&peers);
 
             let rnd_to_id = updates
                 .iter()
@@ -182,6 +183,7 @@ impl<R: tl::RemoteCall<Return = tl::enums::messages::Messages>> IterBuffer<R, Me
         };
 
         let peers = PeerMap::new(users, chats);
+        self.client.cache_peers_maybe(&peers);
 
         let client = self.client.clone();
         self.buffer.extend(
@@ -873,6 +875,7 @@ impl Client {
             noforwards: false,
             quick_reply_shortcut: None,
             allow_paid_floodskip: false,
+            effect: None,
             video_timestamp: None,
             allow_paid_stars: None,
             suggested_post: None,
@@ -958,6 +961,7 @@ impl Client {
         };
 
         let peers = PeerMap::new(users, chats);
+        self.cache_peers_maybe(&peers);
         Ok(messages
             .into_iter()
             .map(|m| Message::from_raw(self, m, Some(peer.into()), &peers))
@@ -1079,6 +1083,7 @@ impl Client {
         };
 
         let peers = PeerMap::new(users, chats);
+        self.cache_peers_maybe(&peers);
         let mut map = messages
             .into_iter()
             .map(|m| Message::from_raw(self, m, Some(peer.into()), &peers))
@@ -1132,6 +1137,7 @@ impl Client {
         };
 
         let peers = PeerMap::new(users, chats);
+        self.cache_peers_maybe(&peers);
         Ok(messages
             .into_iter()
             .map(|m| Message::from_raw(self, m, Some(peer.into()), &peers))
